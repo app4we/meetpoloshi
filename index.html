@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet Poloshi — something exciting is coming.">
+  <meta name="theme-color" content="#168cff">
+  <title>Meet Poloshi — Something Is Coming</title>
+
+  <style>
+    :root {
+      --blue: #168cff;
+      --cyan: #55d6ff;
+      --navy: #071a35;
+      --text: #38536f;
+      --light: #f3faff;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(85,214,255,.28), transparent 28%),
+        radial-gradient(circle at 88% 70%, rgba(22,140,255,.18), transparent 32%),
+        linear-gradient(145deg, #eefaff 0%, #ffffff 48%, #eaf5ff 100%);
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: .55;
+    }
+
+    .orb.one {
+      width: 300px;
+      height: 300px;
+      background: #c5f1ff;
+      left: -130px;
+      top: 10%;
+    }
+
+    .orb.two {
+      width: 230px;
+      height: 230px;
+      background: #dcecff;
+      right: -80px;
+      top: 15%;
+    }
+
+    .orb.three {
+      width: 350px;
+      height: 350px;
+      background: #e2f6ff;
+      right: 8%;
+      bottom: -220px;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .copy {
+      padding: 40px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(22,140,255,.14);
+      box-shadow: 0 8px 30px rgba(17,91,145,.08);
+      color: #2375bd;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 14px rgba(22,140,255,.75);
+    }
+
+    h1 {
+      margin-top: 22px;
+      font-size: clamp(58px, 9vw, 108px);
+      line-height: .88;
+      letter-spacing: -.065em;
+    }
+
+    h1 span {
+      display: block;
+      background: linear-gradient(100deg, #168cff, #42c9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      margin-top: 27px;
+      max-width: 535px;
+      color: var(--text);
+      font-size: clamp(18px, 2.2vw, 23px);
+      line-height: 1.55;
+    }
+
+    .tease {
+      margin-top: 21px;
+      color: #173c63;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 21px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .primary {
+      color: #fff;
+      background: var(--blue);
+      box-shadow: 0 12px 28px rgba(22,140,255,.25);
+    }
+
+    .secondary {
+      color: #1762a2;
+      background: #fff;
+      border: 1px solid #dbeaf7;
+    }
+
+    /* MASCOT */
+    .mascot-area {
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .mascot {
+      width: min(480px, 90%);
+      max-height: 620px;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 35px rgba(20,92,145,.18));
+      animation: float 4s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(-1deg);
+      }
+      50% {
+        transform: translateY(-13px) rotate(1deg);
+      }
+    }
+
+    .coming-card {
+      position: absolute;
+      right: 0;
+      bottom: 8%;
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(22,140,255,.12);
+      box-shadow: 0 15px 40px rgba(24,80,120,.12);
+      color: #315575;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .coming-card strong {
+      display: block;
+      color: var(--blue);
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    /* WAVE */
+    .wave {
+      position: absolute;
+      bottom: -90px;
+      left: -5%;
+      width: 110%;
+      height: 190px;
+      background: rgba(255,255,255,.9);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      transform: rotate(-2deg);
+      z-index: 1;
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 105px 6%;
+      background: #fff;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: clamp(36px, 5vw, 58px);
+      letter-spacing: -.045em;
+    }
+
+    .about-intro {
+      max-width: 690px;
+      margin: 18px auto 0;
+      color: #60778f;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .cards {
+      max-width: 920px;
+      margin: 48px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 32px 22px;
+      border-radius: 24px;
+      background: #f7fbff;
+      border: 1px solid #e2eef8;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(21,99,153,.10);
+    }
+
+    .icon {
+      font-size: 34px;
+      margin-bottom: 13px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+    }
+
+    .card p {
+      margin-top: 8px;
+      color: #60778f;
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    /* SOCIAL */
+    .follow {
+      padding: 90px 6%;
+      text-align: center;
+      background: linear-gradient(145deg, #edf9ff, #ffffff);
+    }
+
+    .follow h2 {
+      font-size: clamp(34px, 5vw, 54px);
+      letter-spacing: -.04em;
+    }
+
+    .follow p {
+      margin: 14px auto 25px;
+      color: #60778f;
+      font-size: 17px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 34px 6%;
+      text-align: center;
+      background: #071a35;
+      color: #a9c1d9;
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: #fff;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      .hero {
+        min-height: auto;
+        padding: 65px 0 110px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        text-align: center;
+      }
+
+      .copy {
+        padding: 20px 0;
+      }
+
+      .lead {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .mascot-area {
+        min-height: 470px;
+      }
+
+      .mascot {
+        width: min(390px, 82vw);
+      }
+
+      .coming-card {
+        right: 3%;
+        bottom: 4%;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .wave {
+        height: 110px;
+        bottom: -55px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="copy">
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Something is coming
+          </div>
+
+          <h1>
+            Meet
+            <span>Poloshi.</span>
+          </h1>
+
+          <p class="lead">
+            A curious little character with a big personality…
+            and a secret he isn't ready to reveal yet.
+          </p>
+
+          <p class="tease">
+            👀 Can you guess what's coming?
+          </p>
+
+          <div class="buttons">
+            <a class="btn primary" href="#about">Meet Poloshi</a>
+            <a class="btn secondary"
+               href="https://www.youtube.com/"
+               target="_blank"
+               rel="noopener">
+              Watch Shorts
+            </a>
+          </div>
+        </div>
+
+        <div class="mascot-area">
+          <!-- Add your Poloshi image to the repository root as: poloshi.png -->
+          <img
+            class="mascot"
+            src="poloshi.png"
+            alt="Poloshi mascot"
+          >
+
+          <div class="coming-card">
+            <strong>Coming soon…</strong>
+            Stay curious. 💙
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="wave"></div>
+  </header>
+
+
+  <section class="about" id="about">
+    <h2>Who is Poloshi?</h2>
+
+    <p class="about-intro">
+      Friendly. Curious. A little mysterious.
+      Follow Poloshi as he discovers something exciting
+      and shares the journey with you.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">👋</div>
+        <h3>Meet</h3>
+        <p>Get to know Poloshi and his world.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">👀</div>
+        <h3>Discover</h3>
+        <p>There is more than meets the eye.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🚀</div>
+        <h3>Coming Soon</h3>
+        <p>The reveal is getting closer.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="follow">
+    <h2>Something is coming…</h2>
+
+    <p>
+      Follow Poloshi and be there when the mystery is revealed.
+    </p>
+
+    <div class="buttons" style="justify-content:center;">
+      <a class="btn primary"
+         href="https://www.instagram.com/"
+         target="_blank"
+         rel="noopener">
+        Instagram
+      </a>
+
+      <a class="btn secondary"
+         href="https://www.youtube.com/"
+         target="_blank"
+         rel="noopener">
+        YouTube
+      </a>
+    </div>
+  </section>
+
+
+  <footer>
+    <strong>Poloshi</strong> · Something is coming… 👀
+  </footer>
+
+</body>
+</html>
